@@ -1,0 +1,4 @@
+<% @pages.each do |page| %>
+    <h1 class="page-header"><%= page.title %></h1>
+    <%= raw page.body %>
+<% end %>

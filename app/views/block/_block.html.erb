@@ -1,0 +1,27 @@
+<% if @blocks.exists? %>
+    <% @blocks.each_slice(3) do |block| %>
+        <div class="row">
+            <% block.each do |block| %>
+                <% if params[:controller] == 'home' %>
+                    <% if block.display == 'home' || block.display == 'all' %>
+                        <div class="col-md-4">
+                            <% if block.show_title == true %>
+                                <h2><%= block.title %></h2>
+                            <% end %>
+                            <p><%= raw block.body %></p>
+                        </div>
+                    <% end %> <!-- end of display check -->
+                <% else %>
+                    <% if block.display == 'nohome' || block.display == 'all' %>
+                        <div class="col-md-4">
+                            <% if block.show_title == true %>
+                                <h2><%= block.title %></h2>
+                            <% end %>
+                            <p><%= raw block.body %></p>
+                        </div>
+                    <% end %> <!-- end of another display check -->
+                <% end %> <!-- end of if params[:controller] == 'home' -->
+            <% end %> <!-- end of block.each -->
+        </div> <!-- end of .row div -->
+    <% end %> <!-- end of blocks.each_slice(3) -->
+<% end %> <!-- end of blocks.exists -->

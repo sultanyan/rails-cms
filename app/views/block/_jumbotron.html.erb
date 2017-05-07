@@ -1,0 +1,24 @@
+<!-- See application_controller.rb -->
+<% if @jumbotron.exists? %>
+    <% @jumbotron.each do |jumbo| %>
+        <% if params[:controller] == 'home' %>
+            <% if jumbo.display == 'home' || jumbo.display == 'all' %>
+                <div class="jumbotron">
+                    <div class="container">
+                        <h1><%= jumbo.title %></h1>
+                        <p><%= raw jumbo.body %></p>
+                    </div>
+                </div>
+            <% end %>
+        <% else %>
+            <% if jumbo.display == 'nohome' || jumbo.display == 'all' %>
+                <div class="jumbotron">
+                    <div class="container">
+                        <h1><%= jumbo.title %></h1>
+                        <p><%= jumbo.body %></p>
+                    </div>
+                </div>
+            <% end %>
+        <% end %>
+    <% end %>
+<% end %>
